@@ -1,4 +1,3 @@
-
 import React from 'react';
 const CTASection: React.FC = () => {
   return <section className="py-16 px-4 relative" id="contato">
@@ -28,7 +27,7 @@ const CTASection: React.FC = () => {
             <div className="md:w-1/2">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-gasfacil-orange to-gasfacil-orange-light opacity-20 blur-md rounded-xl"></div>
-                <img alt="Família feliz com água quente após conserto de aquecedor" className="relative rounded-xl w-full h-auto object-cover shadow-lg" loading="lazy" src="/lovable-uploads/b36957c2-da03-4db4-98ec-13fe73db4f17.jpg" />
+                <img alt="Família feliz com água quente após conserto de aquecedor" className="relative rounded-xl w-full h-auto object-cover shadow-lg" loading="lazy" src="/lovable-uploads/833716b7-f7c9-4e94-a8ea-04351b3666b7.jpg" />
                 
               </div>
             </div>

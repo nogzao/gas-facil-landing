@@ -59,7 +59,7 @@ const SocialProofSection: React.FC = () => {
       }}></div>
       
       <div className="container mx-auto relative z-10">
-        <div ref={sectionRef} className="section-fade-in">
+        <div ref={sectionRef} className={`transition-all duration-700 ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">
               Mais de <span className="text-gasfacil-orange">{isVisible ? count.toLocaleString() : '0'}</span> Residências Atendidas!
@@ -79,7 +79,7 @@ const SocialProofSection: React.FC = () => {
                 ].map((stat, index) => (
                   <div 
                     key={index} 
-                    className="animate-fade-in"
+                    className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
                     style={{ animationDelay: `${0.2 + index * 0.1}s` }}
                   >
                     <div className="text-2xl md:text-3xl font-bold text-gasfacil-orange mb-2">{stat.value}</div>

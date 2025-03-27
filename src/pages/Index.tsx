@@ -43,7 +43,7 @@ const Index = () => {
             </nav>
             
             <a 
-              href="https://wa.me/5511999999999?text=Olá!%20Preciso%20de%20assistência%20com%20meu%20aquecedor%20a%20gás."
+              href="https://wa.me/5521996131840?text=Olá!%20Preciso%20de%20assistência%20com%20meu%20aquecedor%20a%20gás."
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 bg-gasfacil-blue hover:bg-gasfacil-blue-light text-white font-medium py-2 px-4 rounded-lg transition-colors"
@@ -77,7 +77,7 @@ const Index = () => {
       
       {/* WhatsApp floating button for mobile */}
       <a 
-        href="https://wa.me/5511999999999?text=Olá!%20Preciso%20de%20assistência%20com%20meu%20aquecedor%20a%20gás."
+        href="https://wa.me/5521996131840?text=Olá!%20Preciso%20de%20assistência%20com%20meu%20aquecedor%20a%20gás."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-transform hover:scale-110"

@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import BenefitsSection from "@/components/BenefitsSection";
-import SocialProofSection from "@/components/SocialProofSection";
 import CTASection from "@/components/CTASection";
 import ServicesSection from "@/components/ServicesSection";
 import Footer from "@/components/Footer";
@@ -38,7 +37,6 @@ const Index = () => {
             <nav className="hidden md:flex space-x-8">
               <a href="#beneficios" className="text-gray-600 hover:text-gasfacil-blue transition-colors">Benefícios</a>
               <a href="#servicos" className="text-gray-600 hover:text-gasfacil-blue transition-colors">Serviços</a>
-              <a href="#resultados" className="text-gray-600 hover:text-gasfacil-blue transition-colors">Resultados</a>
               <a href="#contato" className="text-gray-600 hover:text-gasfacil-blue transition-colors">Contato</a>
             </nav>
             
@@ -69,7 +67,6 @@ const Index = () => {
         <HeroSection />
         <BenefitsSection />
         <ServicesSection />
-        <SocialProofSection />
         <CTASection />
       </main>
 

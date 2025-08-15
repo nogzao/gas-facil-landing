@@ -1,5 +1,5 @@
-
 import React, { useEffect } from "react";
+import { useParams, Navigate } from "react-router-dom";
 import HeroSection from "@/components/HeroSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import CTASection from "@/components/CTASection";
@@ -7,22 +7,50 @@ import ServicesSection from "@/components/ServicesSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import OndeAtendemos from "@/components/OndeAtendemos";
 import Footer from "@/components/Footer";
+import bairrosData from "@/data/bairros";
+import { makeHeadline, updatePageSEO } from "@/utils/seo";
 
-const Index = () => {
-  // Update page title and description for SEO
-  useEffect(() => {
-    document.title = "Gás Fácil - Conserto de Aquecedor a Gás | Atendimento Rápido";
-    
-    // Create or update meta description
-    let metaDescription = document.querySelector('meta[name="description"]');
-    if (!metaDescription) {
-      metaDescription = document.createElement('meta');
-      metaDescription.setAttribute('name', "description");
-      document.head.appendChild(metaDescription);
+const BairroPage = () => {
+  const { cidade, bairro } = useParams<{ cidade: string; bairro: string }>();
+  
+  // Validar se a cidade é válida
+  if (!cidade || !bairro || !['rj', 'niteroi'].includes(cidade)) {
+    return <Navigate to="/404" replace />;
+  }
+  
+  // Encontrar o bairro nos dados
+  let bairroEncontrado: { nome: string; slug: string } | null = null;
+  let cidadeCompleta = '';
+  
+  if (cidade === 'rj') {
+    cidadeCompleta = 'Rio de Janeiro';
+    // Buscar em todas as zonas do Rio
+    for (const zona of Object.values(bairrosData.rio)) {
+      const encontrado = zona.find(b => b.slug === bairro);
+      if (encontrado) {
+        bairroEncontrado = encontrado;
+        break;
+      }
     }
-    metaDescription.setAttribute('content', 
-      'Conserto de aquecedor a gás rápido e seguro com a Gás Fácil. Atendimento imediato via WhatsApp. Resolva seu problema agora!');
-  }, []);
+  } else if (cidade === 'niteroi') {
+    cidadeCompleta = 'Niterói';
+    bairroEncontrado = bairrosData.niteroi.Niterói.find(b => b.slug === bairro) || null;
+  }
+  
+  // Se o bairro não foi encontrado, redirecionar para 404
+  if (!bairroEncontrado) {
+    return <Navigate to="/404" replace />;
+  }
+  
+  // Update SEO quando a página carregar
+  useEffect(() => {
+    updatePageSEO({
+      bairro: bairroEncontrado!.nome,
+      cidade: cidadeCompleta,
+      slug: bairro!,
+      cidadeBase: cidade!
+    });
+  }, [bairroEncontrado, cidadeCompleta, cidade, bairro]);
 
   return (
     <div className="w-full">
@@ -66,8 +94,71 @@ const Index = () => {
       </header>
 
       {/* Main content */}
-      <main className="pt-16"> {/* Add padding to account for fixed header */}
-        <HeroSection />
+      <main className="pt-16">
+        {/* Hero Section com headline customizada */}
+        <section className="py-20 px-4 relative overflow-hidden bg-gradient-to-b from-white to-blue-50">
+          <div className="absolute inset-0 bg-pattern opacity-30 z-0"></div>
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-100 rounded-full opacity-20 blur-3xl"></div>
+          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-blue-100 rounded-full opacity-20 blur-3xl"></div>
+          
+          <div className="container mx-auto relative z-10">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+              <div className="lg:w-1/2 space-y-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-gasfacil-blue/10 text-gasfacil-blue text-sm font-medium mb-2">
+                  <span className="animate-pulse-soft mr-2 inline-block w-2 h-2 rounded-full bg-gasfacil-blue"></span>
+                  Assistência técnica especializada
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gasfacil-blue leading-tight">
+                  {makeHeadline(bairroEncontrado.nome, cidadeCompleta)}
+                </h1>
+                <p className="text-lg md:text-xl text-gray-700 max-w-xl">
+                  Atendimento rápido, seguro e confiável em {bairroEncontrado.nome} e região. Resolva seu problema agora!
+                </p>
+                <div className="pt-4">
+                  <a 
+                    href="https://wa.me/5521996131840?text=Olá!%20Preciso%20de%20assistência%20com%20meu%20aquecedor%20a%20gás."
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="cta-button inline-flex items-center gap-2 group"
+                  >
+                    Fale Agora pelo WhatsApp 
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              
+              <div className="lg:w-1/2 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gasfacil-blue rounded-2xl rotate-3 scale-105 opacity-10"></div>
+                  <div className="glassmorphism rounded-2xl p-3 shadow-xl">
+                    <img 
+                      alt={`Técnico especializado consertando aquecedor a gás em ${bairroEncontrado.nome}`}
+                      className="w-full h-auto object-cover rounded-xl shadow-inner" 
+                      loading="lazy" 
+                      src="/lovable-uploads/3f9dffcc-dccb-4177-9340-30eca31e3f95.jpg" 
+                    />
+                  </div>
+                  <div className="absolute -right-6 -bottom-6 glassmorphism px-6 py-4 rounded-xl shadow-lg animate-float">
+                    <div className="flex items-center gap-3">
+                      <div className="bg-green-500 text-white p-2 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="text-gasfacil-blue font-semibold">Atendimento Imediato</p>
+                        <p className="text-sm text-gray-600">Resolvemos em até 24 horas</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <BenefitsSection />
         <ServicesSection />
         <SocialProofSection />
@@ -98,4 +189,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default BairroPage;

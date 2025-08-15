@@ -15,8 +15,8 @@ const OndeAtendemos: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold text-gasfacil-blue mb-4">Centro</h3>
             <ul className="space-y-2">
-              {bairrosData.rio.Centro.map((bairro) => (
-                <li key={bairro.slug}>
+              {bairrosData.rio.Centro.map((bairro, index) => (
+                <li key={`centro-${bairro.slug}-${index}`}>
                   <Link 
                     to={`/rj/${bairro.slug}`}
                     className="text-gray-700 hover:text-gasfacil-orange transition-colors duration-200"
@@ -32,8 +32,8 @@ const OndeAtendemos: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold text-gasfacil-blue mb-4">Zona Sul</h3>
             <ul className="space-y-2">
-              {bairrosData.rio["Zona Sul"].map((bairro) => (
-                <li key={bairro.slug}>
+              {bairrosData.rio["Zona Sul"].map((bairro, index) => (
+                <li key={`zona-sul-${bairro.slug}-${index}`}>
                   <Link 
                     to={`/rj/${bairro.slug}`}
                     className="text-gray-700 hover:text-gasfacil-orange transition-colors duration-200"
@@ -49,8 +49,8 @@ const OndeAtendemos: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold text-gasfacil-blue mb-4">Zona Norte</h3>
             <ul className="space-y-2">
-              {bairrosData.rio["Zona Norte"].map((bairro) => (
-                <li key={bairro.slug}>
+              {bairrosData.rio["Zona Norte"].map((bairro, index) => (
+                <li key={`zona-norte-${bairro.slug}-${index}`}>
                   <Link 
                     to={`/rj/${bairro.slug}`}
                     className="text-gray-700 hover:text-gasfacil-orange transition-colors duration-200"
@@ -66,8 +66,8 @@ const OndeAtendemos: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold text-gasfacil-blue mb-4">Zona Oeste</h3>
             <ul className="space-y-2">
-              {bairrosData.rio["Zona Oeste"].map((bairro) => (
-                <li key={bairro.slug}>
+              {bairrosData.rio["Zona Oeste"].map((bairro, index) => (
+                <li key={`zona-oeste-${bairro.slug}-${index}`}>
                   <Link 
                     to={`/rj/${bairro.slug}`}
                     className="text-gray-700 hover:text-gasfacil-orange transition-colors duration-200"
@@ -83,8 +83,8 @@ const OndeAtendemos: React.FC = () => {
           <div>
             <h3 className="text-xl font-semibold text-gasfacil-blue mb-4">Niterói</h3>
             <ul className="space-y-2">
-              {bairrosData.niteroi.Niterói.map((bairro) => (
-                <li key={bairro.slug}>
+              {bairrosData.niteroi.Niterói.map((bairro, index) => (
+                <li key={`niteroi-${bairro.slug}-${index}`}>
                   <Link 
                     to={`/niteroi/${bairro.slug}`}
                     className="text-gray-700 hover:text-gasfacil-orange transition-colors duration-200"

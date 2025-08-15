@@ -44,30 +44,27 @@ const bairrosData: BairrosPorCidade = {
       "Usina", "Mangueira", "Benfica", "São Cristóvão", "Caju", "Vasco da Gama",
       "Triagem", "Bonsucesso", "Ramos", "Olaria", "Penha", "Penha Circular",
       "Brás de Pina", "Cordovil", "Parada de Lucas", "Vigário Geral", "Jardim América",
-      "Higienópolis", "Maria da Graça", "Del Castilho", "Pilares", "Abolição",
+      "Maria da Graça", "Del Castilho", "Pilares", "Abolição",
       "Água Santa", "Encantado", "Lins de Vasconcelos", "Méier", "Todos os Santos",
       "Cachambi", "Engenho de Dentro", "Riachuelo", "Rocha", "Sampaio", "São Francisco Xavier",
       "Madureira", "Turiaçu", "Rocha Miranda", "Honório Gurgel", "Oswaldo Cruz",
       "Bento Ribeiro", "Marechal Hermes", "Deodoro", "Vila Militar", "Magalhães Bastos",
       "Realengo", "Padre Miguel", "Bangu", "Senador Camará", "Santíssimo",
       "Acari", "Barros Filho", "Costa Barros", "Coelho Neto", "Guadalupe",
-      "Honório Gurgel", "Irajá", "Jardim América", "Pavuna", "Parque Anchieta",
-      "Ricardo de Albuquerque", "Anchieta", "Parque Colúmbia", "Vila da Penha",
-      "Vista Alegre", "Irajá", "Colégio", "Complexo do Alemão", "Cidade Alta",
-      "Inhaúma", "Engenho da Rainha", "Tomás Coelho", "Jacaré", "Jacarezinho",
-      "Manguinhos", "Bonsucesso", "Higienópolis", "Piedade", "Quintino Bocaiúva",
-      "Cascadura", "Vaz Lobo", "Vicente de Carvalho", "Vila da Penha", "Vista Alegre"
+      "Irajá", "Pavuna", "Parque Anchieta", "Ricardo de Albuquerque", "Anchieta", 
+      "Parque Colúmbia", "Vila da Penha", "Vista Alegre", "Colégio", "Complexo do Alemão", 
+      "Cidade Alta", "Inhaúma", "Engenho da Rainha", "Tomás Coelho", "Jacaré", 
+      "Jacarezinho", "Manguinhos", "Piedade", "Quintino Bocaiúva",
+      "Cascadura", "Vaz Lobo", "Vicente de Carvalho"
     ].map(nome => ({ nome, slug: slugify(nome) })),
     
     "Zona Oeste": [
-      "Campo Grande", "Cosmos", "Inhoaíba", "Santíssimo", "Senador Vasconcelos",
-      "Paciência", "Santa Cruz", "Sepetiba", "Guaratiba", "Barra de Guaratiba",
-      "Pedra de Guaratiba", "Vargem Grande", "Vargem Pequena", "Camorim",
-      "Curicica", "Freguesia", "Pechincha", "Taquara", "Tanque", "Praça Seca",
-      "Vila Valqueire", "Anil", "Gardênia Azul", "Cidade de Deus", "Jacarepaguá",
-      "Itanhangá", "Recreio dos Bandeirantes", "Grumari", "Bangu", "Padre Miguel",
-      "Realengo", "Deodoro", "Vila Militar", "Magalhães Bastos", "Sulacap",
-      "Campo dos Afonsos"
+      "Campo Grande", "Cosmos", "Inhoaíba", "Paciência", "Santa Cruz", "Sepetiba", 
+      "Guaratiba", "Barra de Guaratiba", "Pedra de Guaratiba", "Vargem Grande", 
+      "Vargem Pequena", "Camorim", "Curicica", "Freguesia", "Pechincha", "Taquara", 
+      "Tanque", "Praça Seca", "Vila Valqueire", "Anil", "Gardênia Azul", "Cidade de Deus", 
+      "Jacarepaguá", "Itanhangá", "Recreio dos Bandeirantes", "Grumari", "Sulacap",
+      "Campo dos Afonsos", "Senador Vasconcelos"
     ].map(nome => ({ nome, slug: slugify(nome) }))
   },
   

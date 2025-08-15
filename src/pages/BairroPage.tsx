@@ -13,8 +13,11 @@ import { makeHeadline, updatePageSEO } from "@/utils/seo";
 const BairroPage = () => {
   const { cidade, bairro } = useParams<{ cidade: string; bairro: string }>();
   
+  console.log('BairroPage - Parâmetros recebidos:', { cidade, bairro });
+  
   // Validar se a cidade é válida
   if (!cidade || !bairro || !['rj', 'niteroi'].includes(cidade)) {
+    console.log('BairroPage - Redirecionando para 404: cidade ou bairro inválido');
     return <Navigate to="/404" replace />;
   }
   
@@ -22,25 +25,33 @@ const BairroPage = () => {
   let bairroEncontrado: { nome: string; slug: string } | null = null;
   let cidadeCompleta = '';
   
+  console.log('BairroPage - Buscando bairro:', { cidade, bairro });
+  
   if (cidade === 'rj') {
     cidadeCompleta = 'Rio de Janeiro';
     // Buscar em todas as zonas do Rio
-    for (const zona of Object.values(bairrosData.rio)) {
-      const encontrado = zona.find(b => b.slug === bairro);
+    for (const [zona, listaBairros] of Object.entries(bairrosData.rio)) {
+      console.log(`BairroPage - Buscando em ${zona}:`, listaBairros.map(b => b.slug));
+      const encontrado = listaBairros.find(b => b.slug === bairro);
       if (encontrado) {
         bairroEncontrado = encontrado;
+        console.log('BairroPage - Bairro encontrado:', encontrado);
         break;
       }
     }
   } else if (cidade === 'niteroi') {
     cidadeCompleta = 'Niterói';
     bairroEncontrado = bairrosData.niteroi.Niterói.find(b => b.slug === bairro) || null;
+    console.log('BairroPage - Bairro encontrado em Niterói:', bairroEncontrado);
   }
   
   // Se o bairro não foi encontrado, redirecionar para 404
   if (!bairroEncontrado) {
+    console.log('BairroPage - Bairro não encontrado, redirecionando para 404');
     return <Navigate to="/404" replace />;
   }
+  
+  console.log('BairroPage - Sucesso! Renderizando página para:', bairroEncontrado);
   
   // Update SEO quando a página carregar
   useEffect(() => {

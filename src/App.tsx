@@ -17,8 +17,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/rj/:bairro" element={<BairroPage />} />
-          <Route path="/niteroi/:bairro" element={<BairroPage />} />
+          <Route path="/:cidade/:bairro" element={<BairroPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
